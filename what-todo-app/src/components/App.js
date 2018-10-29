@@ -1,10 +1,26 @@
 import React from 'react'
-import UserProfile from '../playground/ConditionalRenderingExample'
 
 export default class App extends React.Component {
   render() {
+    let app = {
+      title: 'WhatTodo',
+      subtitle: 'Decide what to do next.',
+      todos: ['wash cat', 'burn mail', 'terrorize neighbor']    
+    }
+
+    // app = {}
+    
     return (
-      <UserProfile />
+      <div>
+        <h1>{app.title}</h1>
+        {app.subtitle && <h3>{app.subtitle}</h3>}
+        <ul>
+          {(app.todos ? 
+            app.todos.map(todo => <li>{todo}</li>) :
+            "Nothing to do."
+          )}
+        </ul>
+      </div>
     )
   }
 }

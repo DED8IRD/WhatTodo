@@ -37,7 +37,12 @@ const ConditionalRenderingExample = (props) => {
 export default ConditionalRenderingExample;
 ```
 
-To run example, in `src/App.js` replace the `render` function with the following:
+To run example, in `src/App.js`:
+1. Import `<ConditionalRenderingExample>`
+```js 
+import UserProfile from '../playground/ConditionalRenderingExample'
+```
+2. Replace the `render` function with the following:
 ```js 
 render() {
 	return <UserProfile />
