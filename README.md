@@ -1,56 +1,40 @@
-# Conditional Rendering
+# Arrays in JSX
 
-In this portion, we explore conditional rendering with JSX.
+You might have noticed that embedding arrays like `{arr}` doesn't quite give you the out put you want, and you aren't able to iterate over an array directly in JSX.
 
-There are three basic ways to conditionally render JSX:
-1. functional conditional (if statement in function)
-2. ternary operator (cond ? if : else)
-3. logical AND operator (condition && template)
+The solution: use `map()` to functionally transform an array into JSX elements.
 
-Consider the following example.
-In `src/playground/ConditionalRenderingExample.js`
+In [`./src/playground/RenderArraysAsList.js`](`./src/playground/RenderArraysAsList.js`):
+
 ```jsx
-const ConditionalRenderingExample = (props) => {
-	let user = {
-		name: 'Eunika Wu',
-		age: '23',
-		location: {'city':'Portland', 'state':'OR', 'country':'USA'},
-	};
+// Render lists programmatically using maps in your template.
 
-	// user = {} // test rendering
+const arr = ['this', 'is', 'a', 'list', null, '', false];
+const template = (
+	<div>
+		<ol>
+			{arr.map((item) => <li>{item}</li>)}
+		</ol>
+	</div>
+);
 
-	const getLocation = (location) => {
-		if (location) {
-			return <p>Location: {Object.keys(location).map(key => location[key]).join(', ')}</p>
-		}
-	}
-
-  return (
-		<div>
-			<h1>Hello {user.name ? user.name : 'Anon'}!</h1> #2 ternary operator
-			{user.age >= 18 && <p>Age: {user.age}</p>} #3 unary operator
-			{getLocation(user.location)} #1 functional conditional
-		</div>
-  )
-}
-
-export default ConditionalRenderingExample;
+ReactDOM.render(template, document.getElementById('app');
 ```
 
-To run example, in `src/App.js`:
-1. Import `<ConditionalRenderingExample>`
-```js 
-import UserProfile from '../playground/ConditionalRenderingExample'
-```
-2. Replace the `render` function with the following:
-```js 
-render() {
-	return <UserProfile />
-}
-```
+#### Keys
+Note: When you run the code above, you'll get this warning: 
+`Warning: Each child in an array or iterator should have a unique "key" prop.`
 
-## Apply conditional rendering to WhatTodoApp
+The **key** should be a unique identifier for your iterable item. Keys allow React to identify which items have been added/removed/updated. Typically if you're working with a database, this will be the item's *primary key*. Otherwise, you'll need to assign an unique identifier.
 
-In Part 2 of WhatTodo, we will update `App.js` to:
-1. Conditionally render `app.subtitle` if it exists.
-2. Render 'Here are your options:' if `app.todos` is not empty, or 'No todos.' if it is empty.
+A good rule of thumb is that elements inside the `map()` call need keys.
+
+To fix this above code, we'll assign a `key` prop inside your `map`:
+```jsx
+{arr.map((item, idx) => <li key={idx}>{item}</li>)}
+```
+Here, we're using the item's index. Note: if you are going to modify the order of this array at all, you should choose a different key.
+
+Read more about why keys are necessary [here](https://reactjs.org/docs/reconciliation.html#recursing-on-children).
+
+In this section, we want to modify `app.js` such that WTDApp renders each todo as a `<li>` element.
