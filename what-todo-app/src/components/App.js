@@ -1,5 +1,4 @@
 import React from 'react'
-// import List from '../playground/RenderArraysAsList'
 
 export default class App extends React.Component {
   render() {
@@ -9,10 +8,28 @@ export default class App extends React.Component {
       todos: ['wash cat', 'burn mail', 'terrorize neighbor']    
     }
 
+    // event handler for form submission    
+    const onFormSubmit = (evt) => {
+      evt.preventDefault(); 
+      const todo = evt.target.elements.todo.value;
+      if (todo) {
+        app.todos.push(todo);
+        evt.target.elements.todo.value = '';
+      }
+      console.log(app.todos)
+    }
+
     return (
       <div>
         <h1>{app.title}</h1>
         {app.subtitle && <h3>{app.subtitle}</h3>}
+        
+        {/*Form to add todo*/}
+        <form onSubmit={onFormSubmit}>
+          <input type='text' name='todo'/>
+          <button>+</button>
+        </form> 
+
         <ul>
           {(app.todos ? 
             app.todos.map(todo => <li key={todo}>{todo}</li>) :
@@ -22,9 +39,5 @@ export default class App extends React.Component {
       </div>
     )
   }
-
-  // render () {
-  //   return <List />
-  // }
 }
 

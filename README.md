@@ -1,40 +1,29 @@
-# Arrays in JSX
+# Forms and Inputs
 
-You might have noticed that embedding arrays like `{arr}` doesn't quite give you the out put you want, and you aren't able to iterate over an array directly in JSX.
+In this portion, we explore event handling for input and forms.
 
-The solution: use `map()` to functionally transform an array into JSX elements.
+In [`./src/components/App.js`](`./src/components/App.js`):
 
-In [`./src/playground/RenderArraysAsList.js`](`./src/playground/RenderArraysAsList.js`):
-
+We set up the addTodo form in JSX:
 ```jsx
-// Render lists programmatically using maps in your template.
-
-const arr = ['this', 'is', 'a', 'list', null, '', false];
-const template = (
-	<div>
-		<ol>
-			{arr.map((item) => <li>{item}</li>)}
-		</ol>
-	</div>
-);
-
-ReactDOM.render(template, document.getElementById('app');
+<form onSubmit={onFormSubmit}>
+	<input type='text' name='todo'/>
+	<button>+</button>
+</form>
 ```
 
-#### Keys
-Note: When you run the code above, you'll get this warning: 
-`Warning: Each child in an array or iterator should have a unique "key" prop.`
-
-The **key** should be a unique identifier for your iterable item. Keys allow React to identify which items have been added/removed/updated. Typically if you're working with a database, this will be the item's *primary key*. Otherwise, you'll need to assign an unique identifier.
-
-A good rule of thumb is that elements inside the `map()` call need keys.
-
-To fix this above code, we'll assign a `key` prop inside your `map`:
+Note that `onSubmit` takes in the method `onFormSubmit`:
 ```jsx
-{arr.map((item, idx) => <li key={idx}>{item}</li>)}
+const onFormSubmit = (evt) => {
+	evt.preventDefault();
+	const todo = evt.target.elements.todo.value;
+	if (todo) {
+		app.todos.push(todo);
+		evt.target.elements.todo.value = '';
+	}
+	console.log(app.todos)
+}
 ```
-Here, we're using the item's index. Note: if you are going to modify the order of this array at all, you should choose a different key.
 
-Read more about why keys are necessary [here](https://reactjs.org/docs/reconciliation.html#recursing-on-children).
-
-In this section, we want to modify `app.js` such that WTDApp renders each todo as a `<li>` element.
+This is where we actually add the todo to our `app.todos`.
+If you enter a new todo, you should see it added to `app.todos` from the console.log statement. However, this change is not reflected in our rendered list. To make our changes appear onscreen, we need to enable *data binding*. In the next section, we will learn how through using *component state*.
