@@ -9,14 +9,14 @@ export default class App extends React.Component {
     }
 
     // app = {}
-    
+
     return (
       <div>
         <h1>{app.title}</h1>
         {app.subtitle && <h3>{app.subtitle}</h3>}
         <ul>
           {(app.todos ? 
-            app.todos.map(todo => <li>{todo}</li>) :
+            app.todos :
             "Nothing to do."
           )}
         </ul>
