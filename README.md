@@ -33,3 +33,19 @@ Create the following components:
 
 Don't worry about getting all the functionalities working yet. Just make sure they are being properly rendered to screen (i.e. comment out the bits of data that are currently breaking your code).
 
+Start off by having all these components in `App.js` to see if they work. Then, move each component into its own file under `src/components/` and import them into files that will use them. 
+
+The top of your `App.js` will look like this:
+```jsx
+import Header from './Header'
+import AddTodo from './AddTodo'
+import Todos from './Todos'
+import Decision from './Decision'
+```
+
+The top of `Todos.js` will look like this:
+```jsx 
+import Todo from './Todo'
+```
+
+Note: Make sure you `export default` these components so you can import them.
