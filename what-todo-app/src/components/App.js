@@ -1,5 +1,4 @@
 import React from 'react'
-// import Counter from '../playground/Counter'
 
 export default class App extends React.Component {
   // define constructor to initialize default state object
@@ -13,7 +12,6 @@ export default class App extends React.Component {
     }
     // #2 bind methods
     this.addTodo = this.addTodo.bind(this)
-    this.onFormSubmit = this.onFormSubmit.bind(this)
   }
 
   // #3 update state
@@ -23,12 +21,44 @@ export default class App extends React.Component {
     }))
   }
 
-    // event handler for form submission    
+  render() {
+    return (
+      <div>
+        <Header />
+        <AddTodo />
+        <Todos />
+        <Decision />  
+      </div>
+    )
+  }
+}
+
+class Header extends React.Component {
+  render() {
+    return (
+      <div>
+        Header
+      {/* 
+        <h1>{this.state.title}</h1>
+        {this.state.subtitle && <h3>{this.state.subtitle}</h3>}       
+      */}
+      </div>
+    );
+  }
+}
+
+class AddTodo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.onFormSubmit = this.onFormSubmit.bind(this)    
+  }
+   
+  // event handler for form submission    
   onFormSubmit(evt) {
     evt.preventDefault(); 
     const todo = evt.target.elements.todo.value
     if (todo) {
-      this.addTodo(todo)
+      // this.addTodo(todo)
       evt.target.elements.todo.value = ''
       console.log(this.state.todos)
     }
@@ -36,28 +66,45 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>{this.state.title}</h1>
-        {this.state.subtitle && <h3>{this.state.subtitle}</h3>}
-        
-        {/* #3 update state on form submission */}
-        <form onSubmit={this.onFormSubmit}>
-          <input type='text' name='todo'/>
-          <button>+</button>
-        </form> 
-
-        <ul>
-          {(this.state.todos ? 
-            this.state.todos.map(todo => <li key={todo}>{todo}</li>) :
-            "Nothing to do."
-          )}
-        </ul>
-      </div>
-    )
+      <form onSubmit={this.onFormSubmit}>
+        <input type='text' name='todo'/>
+        <button>+</button>
+      </form>         
+    );
   }
-
-  // render() {
-  //   return <Counter />
-  // }
 }
 
+class Todos extends React.Component {
+  render() {
+    return (
+      <ul>
+        <Todo />
+        {/*(this.state.todos ? 
+          this.state.todos.map(todo => <Todo />) :
+          "Nothing to do."
+        )*/}
+      </ul>
+    );
+  }
+}
+
+class Todo extends React.Component {
+  render() {
+    return (
+      <div>
+        <li>todo</li>
+        {/*
+        <li key={todo}>{todo}</li>
+        */}
+      </div>
+    );
+  }
+}
+
+class Decision extends React.Component {
+  render() {
+    return (
+      <button>Decide</button>
+    );
+  }
+}
