@@ -32,7 +32,9 @@ export default class App extends React.Component {
           title={this.state.title} 
           subtitle={this.state.subtitle}
         />
-        <AddTodo />
+        <AddTodo 
+          addTodo={this.addTodo}
+        />
         <Todos 
           todos={this.state.todos}
         />

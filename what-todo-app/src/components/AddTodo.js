@@ -11,8 +11,7 @@ export default class AddTodo extends React.Component {
     evt.preventDefault(); 
     const todo = evt.target.elements.todo.value
     if (todo) {
-      // We no longer have access to addTodo in this scope.
-      // this.addTodo(todo) 
+      this.props.addTodo(todo) 
       evt.target.elements.todo.value = ''
     }
   }
