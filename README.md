@@ -55,11 +55,12 @@ ___
 
 In this section, we want enable two-way data binding in our WhatTodo app by using component state:
 
-1. Define a `addTodo()` method and bind it in our app's `constructor()`
-
-2. Set up a default state object in `App.js` with default values for the following attributes:
-	- `todos` - an array of todos  
-	- `todo` - single todo from form input 
+1. Set up a default state object in `App.js` with default values for the following attributes:
+	- `title`  
+	- `subtitle` 
+	- `todos`
+put 
+2. Define an `addTodo()` method. Convert `onFormSubmit()` into a method. Bind `addTodo and onFormSubmit` in our app's `constructor()`
 
 3. Update state based on events: `setState()` within `addTodo()` 
 
