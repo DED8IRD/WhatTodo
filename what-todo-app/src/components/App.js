@@ -12,7 +12,7 @@ export default class App extends React.Component {
     this.state = {
       title: 'WhatTodo',
       subtitle: 'Decide what to do next.',
-      todos: []
+      todos: ['dehumanize yourself', 'face to bloodshed', 'rejoice']
     }
     // #2 bind methods
     this.addTodo = this.addTodo.bind(this)
@@ -28,9 +28,14 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <Header />
+        <Header 
+          title={this.state.title} 
+          subtitle={this.state.subtitle}
+        />
         <AddTodo />
-        <Todos />
+        <Todos 
+          todos={this.state.todos}
+        />
         <Decision />  
       </div>
     )
