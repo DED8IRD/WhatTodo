@@ -1,4 +1,4 @@
-# Data Binding
+# Data Binding with Component State
 
 In this portion, we explore data binding using **component state** in a Counter app.
 You can have two-way communication between parent to child components using component `state`.
@@ -51,8 +51,8 @@ export default class Counter extends React.Component {
 	}
 }
 ```
-___
 
+___
 In this section, we want enable two-way data binding in our WhatTodo app by using component state:
 
 1. Set up a default state object in `App.js` with default values for the following attributes:
@@ -60,7 +60,8 @@ In this section, we want enable two-way data binding in our WhatTodo app by usin
 	- `subtitle` 
 	- `todos`
 put 
-2. Define an `addTodo()` method. Convert `onFormSubmit()` into a method. Bind `addTodo and onFormSubmit` in our app's `constructor()`
+2. Define an `addTodo()` method. Convert `onFormSubmit()` into a method. Bind `addTodo and onFormSubmit` in our app's `constructor()`. 
+	- Hint: Use `Array.concat()` to update `todos`
 
 3. Update state based on events: `setState()` within `addTodo()` 
 
