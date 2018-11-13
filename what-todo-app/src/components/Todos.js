@@ -4,7 +4,12 @@ import Todo from './Todo'
 const Todos = (props) => {
   return (
     <div>
-      <button onClick={props.removeAll}>Clear todos</button>
+      <button 
+        onClick={props.removeAll}
+        disabled={props.todos.length === 0}
+      >
+        Clear todos
+      </button>
       <ul>
         {(props.todos.length ? 
           props.todos.map(todo => (

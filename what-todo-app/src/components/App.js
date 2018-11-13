@@ -10,9 +10,9 @@ export default class App extends React.Component {
     super(props)
     // #1 set up default state object
     this.state = {
-      title: 'WhatTodo',
-      subtitle: 'Decide what to do next.',
-      todos: ['dehumanize yourself', 'face to bloodshed', 'rejoice']
+      title: props.title,
+      subtitle: props.subtitle,
+      todos: props.todos
     }
     // #2 bind methods
     this.addTodo = this.addTodo.bind(this)
@@ -70,4 +70,10 @@ export default class App extends React.Component {
       </div>
     )
   }
+}
+
+App.defaultProps = {
+  title: 'What Todo?',
+  subtitle: 'Figure out what to do next',
+  todos: [],
 }
