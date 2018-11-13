@@ -21,6 +21,26 @@ export default class App extends React.Component {
     this.chooseRandom = this.chooseRandom.bind(this)
   }
 
+  componentDidMount() {
+    if (localStorage.hasOwnProperty('todos')) {
+      const todos = JSON.parse(localStorage.getItem('todos'))
+      if (todos !== this.state.todos) {
+        this.setState(() => ({
+          todos: todos
+        }))
+        console.log('loading data')
+      }
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.todos !== prevState.todos) {
+      const todos = JSON.stringify(this.state.todos)
+      localStorage.setItem('todos', todos)
+      console.log('saving data')
+    }
+  }
+
   // #3 update state
   addTodo(todo) {
     if (this.state.todos.indexOf(todo) !== -1) {
