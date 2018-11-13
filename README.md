@@ -1,36 +1,39 @@
-# Default Props
-    
-You can set up a component's default state object by using default props.
+# Data Persistence with Life Cycle Methods and Local Storage
 
-To do so:
-1. Define your default component state object using prop values
-`this.state = {attr: props.attr, ...}`
-2. Define your default props after your component definition
-`ComponentName.defaultProps = {attr: defaultVal}`
+So far, we have set up a functioning What Todo app, but our todos are lost when we refresh the page. To fix this, we'll set up data persistence using `localStorage` and **component lifecycle methods**.
 
-Consider the following:
-```jsx
-class Greet extends React.Component {
-    constructor(props) {
-        super(props);
-        this.greet = this.greet.bind(this);
-        this.state = {
-            greeting: props.greeting,
-            name: props.name,
-        };
-    }
-    greet() {
-        return this.state.greeting +' '+ this.state.name;
-    }
-}
-
-Greet.defaultProps = {
-    greeting: 'Hello',
-    name: 'World'
-}
-
-ReactDOM.render(<Greet name='Bronson' />, document.getElementById('app'))
+To do so, you'll need to:
+1. Load data from `localStorage` when the component mounts
+```js
+this.setState({val: JSON.parse(localStorage.getItem('key'))});
 ```
-The DOM outputs `Hello Bronson!` in this example because we specify a value for the `name` prop. If we left out the the `name` prop, the greet message would default to `Hello World!`.
+2. Save data to `localStorage` when the component updates
+```js
+let val = JSON.stringify(this.state.val) 
+localStorage.setItem('key', val);
+```
 
-In this section, we want to specify default props for `App.js`. 
+In [./src/playground/CounterWithDataPersistence.js](.what-todo-app/src/playground/CounterWithDataPersistence.js):
+```jsx
+// #1
+componentDidMount() {
+    try {
+        const count = parseInt(JSON.parse(localStorage.getItem('count')));
+        if (!isNan(count)) {
+            this.setState(() => ({count: count}));
+        }
+    } catch(err) {
+
+    } 
+    console.log('loading data')
+}
+// #2
+componentDidUpdate(prevProps, prevState) {
+    if (prevState.count !== this.state.count) {
+        localStorage.setItem('count', this.state.count);
+        console.log('saving data')
+    }
+}
+```
+
+In this section, we want to use lifecycle methods to save and load data from local storage in our WhatTodo `App`. 
