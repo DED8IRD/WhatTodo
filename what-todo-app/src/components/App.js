@@ -24,7 +24,7 @@ export default class App extends React.Component {
   componentDidMount() {
     if (localStorage.hasOwnProperty('todos')) {
       const todos = JSON.parse(localStorage.getItem('todos'))
-      if (todos !== this.state.todos) {
+      if (todos) {
         this.setState(() => ({
           todos: todos
         }))
@@ -41,6 +41,10 @@ export default class App extends React.Component {
     }
   }
 
+  componentWillUnmount() {
+    console.log('component unmounted');
+  }
+  
   // #3 update state
   addTodo(todo) {
     if (this.state.todos.indexOf(todo) !== -1) {
