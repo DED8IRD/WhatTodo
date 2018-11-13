@@ -3,7 +3,12 @@ import React from 'react';
 export default class Decision extends React.Component {
 	render() {
 		return (
-			<button>Decide</button>
+			<button 
+				onClick={this.props.chooseRandom}
+				disabled={(this.props.empty)}
+			>
+				Decide
+			</button>
 		);
 	}
 }

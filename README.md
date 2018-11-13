@@ -23,10 +23,12 @@ In this section, we want enable two-way data binding within `App.js` and its chi
     - `todos`
 
 2. Define the following methods in our `App` component and bind them to its `constructor`:
-    1. `addTodo`
-    2. `removeTodo`
-    3. `removeAll`
-    4. `chooseRandom`
+    1. `addTodo(todo)` - adds `todo` from form to `this.state.todos`
+        - Hint: Use `Array.concat()` to update `prevState.todos`
+    2. `removeTodo(todo)` - removes `todo` from `this.state.todos`
+        - Hint: Use `Array.filter()` to update `prevState.todos`
+    3. `removeAll()` - resets `this.state.todos` to empty list
+    4. `chooseRandom()` - alerts randomly selected todo
 
 
 3. Update state based on events in the methods you defined in part 1

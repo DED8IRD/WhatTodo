@@ -16,6 +16,9 @@ export default class App extends React.Component {
     }
     // #2 bind methods
     this.addTodo = this.addTodo.bind(this)
+    this.removeTodo = this.removeTodo.bind(this)
+    this.removeAll = this.removeAll.bind(this)
+    this.chooseRandom = this.chooseRandom.bind(this)
   }
 
   // #3 update state
@@ -23,6 +26,23 @@ export default class App extends React.Component {
     this.setState((prevState) => ({
       todos: prevState.todos.concat([todo])
     }))
+  }
+
+  removeTodo(todo) {
+    this.setState((prevState) => ({
+      todos: prevState.todos.filter(item => item !== todo)
+    }))    
+  }
+
+  removeAll() {
+    this.setState((prevState) => ({
+      todos: []
+    }))
+  }
+
+  chooseRandom() {
+    const randomIdx = Math.floor(Math.random() * this.state.todos.length)
+    alert(this.state.todos[randomIdx])
   }
 
   render() {
@@ -37,8 +57,13 @@ export default class App extends React.Component {
         />
         <Todos 
           todos={this.state.todos}
+          removeTodo={this.removeTodo}
+          removeAll={this.removeAll}
         />
-        <Decision />  
+        <Decision 
+          empty={!this.state.todos.length}
+          chooseRandom={this.chooseRandom}
+        />  
       </div>
     )
   }
