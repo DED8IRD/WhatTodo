@@ -3,7 +3,10 @@ import React from 'react';
 export default class AddTodo extends React.Component {
 	constructor(props) {
 		super(props);
-    this.onFormSubmit = this.onFormSubmit.bind(this)		
+    this.onFormSubmit = this.onFormSubmit.bind(this)	
+    this.state = {
+      error: undefined
+    }	
 	}
    
   // event handler for form submission    
@@ -11,8 +14,11 @@ export default class AddTodo extends React.Component {
     evt.preventDefault(); 
     const todo = evt.target.elements.todo.value
     if (todo) {
-      this.props.addTodo(todo) 
+      const error = this.props.addTodo(todo) 
       evt.target.elements.todo.value = ''
+      this.setState(() => ({
+        error: error
+      }))
     }
   }
 
@@ -21,6 +27,7 @@ export default class AddTodo extends React.Component {
       <form onSubmit={this.onFormSubmit}>
         <input type='text' name='todo'/>
         <button>+</button>
+        {this.state.error && <p>{this.state.error}</p>}        
       </form> 				
 		);
 	}

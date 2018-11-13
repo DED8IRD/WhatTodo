@@ -1,12 +1,12 @@
 import React from 'react';
 
-export default class Todo extends React.Component {
-	render() {
-		return (
-			<li>
-				<p>{this.props.todo}</p>
-				<button onClick={() => this.props.removeTodo(this.props.todo)}>×</button>
-			</li>
-		)	
-	}
+const Todo = (props) => {
+	return (
+		<li>
+			<p>{props.todo}</p>
+			<button onClick={() => props.removeTodo(props.todo)}>×</button>
+		</li>
+	)	
 }
+
+export default Todo;

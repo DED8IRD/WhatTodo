@@ -23,6 +23,9 @@ export default class App extends React.Component {
 
   // #3 update state
   addTodo(todo) {
+    if (this.state.todos.indexOf(todo) !== -1) {
+      return "Error: Duplicate todo."
+    }
     this.setState((prevState) => ({
       todos: prevState.todos.concat([todo])
     }))
