@@ -47,6 +47,9 @@ export default class App extends React.Component {
   
   // #3 update state
   addTodo(todo) {
+    if (!todo) {
+      return "Error: Please enter a todo."
+    }
     if (this.state.todos.indexOf(todo) !== -1) {
       return "Error: Duplicate todo."
     }

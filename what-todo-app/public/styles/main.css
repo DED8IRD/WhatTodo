@@ -1,0 +1,26 @@
+html, body {
+	width: 100%;
+	padding: 30px;
+	font-family: Rubik, sans-serif;
+}
+
+#root {
+	margin: auto;
+	padding: 40px;
+	width: 350px;
+	background: linear-gradient(lightgrey, darkgrey);
+	border-radius: 25px;
+}
+
+.title {
+	font-family: Rubik;
+	font-weight: bold;
+}
+
+input {
+	width: 90%;
+}
+
+li button {
+	float: right;
+}

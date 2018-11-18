@@ -1,39 +1,50 @@
-# Data Persistence with Life Cycle Methods and Local Storage
+# Styling React Elements
 
-So far, we have set up a functioning What Todo app, but our todos are lost when we refresh the page. To fix this, we'll set up data persistence using `localStorage` and **component lifecycle methods**.
+Because **Babel** transpiles JSX elements into plain HTML elements, you can style them using CSS as-per-usual.
 
-To do so, you'll need to:
-1. Load data from `localStorage` when the component mounts
-```js
-this.setState({val: JSON.parse(localStorage.getItem('key'))});
-```
-2. Save data to `localStorage` when the component updates
-```js
-let val = JSON.stringify(this.state.val) 
-localStorage.setItem('key', val);
-```
+## Adding CSS classes and ids to JSX elements
+### class
+Because `class` is a keyword in JavaScript, React uses the prop `className` to add CSS classes to a JSX element. Simply pass a string as the `className` prop.
 
-In [./src/playground/CounterWithDataPersistence.js](.what-todo-app/src/playground/CounterWithDataPersistence.js):
-```jsx
-// #1
-componentDidMount() {
-    try {
-        const count = parseInt(JSON.parse(localStorage.getItem('count')));
-        if (!isNan(count)) {
-            this.setState(() => ({count: count}));
-        }
-    } catch(err) {
+### id 
+`id` is not a reserved keyword, so add them to JSX elements normally.
 
-    } 
-    console.log('loading data')
+```jsx 
+render() {
+	return <h1 className="greeting" id="hello-world">Hello World!</h1>
 }
-// #2
-componentDidUpdate(prevProps, prevState) {
-    if (prevState.count !== this.state.count) {
-        localStorage.setItem('count', this.state.count);
-        console.log('saving data')
-    }
+``` 
+
+Babel transpiles the code above into the following HTML:
+```html 
+<h1 class="greeting" id="hello-world">Hello World!</h1>
+``` 
+
+## Style with CSS
+Style with CSS as usual (reference classes with `.` and ids with `#`.
+
+## Inline Styling
+The `style` attribute accepts a JavaScript object with *camelCased* properties rather than *kebab-cased* CSS strings.
+
+```jsx 
+const greetStyle = {
+	color: 'green',
+	fontSize: '72',
+	backgroundImg: `url(${imgUrl})`
 }
+
+const GreetComponent = (props) => {
+	return <div style={greetStyle}>Hello World!</div>
+}
+
 ```
 
-In this section, we want to use lifecycle methods to save and load data from local storage in our WhatTodo `App`. 
+As of React 16, any standard or custom DOM attributes are fully supported. You may also use custom attributes as long as they’re fully lowercase.
+
+___
+Note: Many examples use `style` for convenience, but using the `style` attribute as the primary means of styling elements is **generally not recommended**. 
+
+In most cases, `className` should be used to reference classes defined in an external CSS stylesheet. `style` is most often used in React applications to add dynamically-computed styles at render time. 
+
+___
+In this section, style WhatTodo App.
