@@ -32,9 +32,9 @@ console.log(store.getState())
 const unsubscribe = store.subscribe(() => console.log(store.getState()))
 
 // dispatch actions 
-store.dispatch(todoApp(store.getState(), addTodo('wash cat')))
-store.dispatch(todoApp(store.getState(), addTodo('butter plates')))
-store.dispatch(todoApp(store.getState(), addTodo('terrorize neighbor')))
+store.dispatch(addTodo('wash cat'))
+store.dispatch(addTodo('butter plates'))
+store.dispatch(addTodo('terrorize neighbor'))
 store.dispatch(toggleTodo('wash cat'))
 store.dispatch(toggleTodo('butter plates'))
 store.dispatch(setVisibilityFilter(VisibilityFilters.SHOW_COMPLETED))

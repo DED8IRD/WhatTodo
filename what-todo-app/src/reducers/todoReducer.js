@@ -10,15 +10,15 @@ import {
 export default function todos(state=[], action) {
 	switch (action.type) {
 		case ADD_TODO:
-			return [...state.todos, {text: action.text, completed: false}]
+			return [...state, {text: action.text, completed: false}]
 		case TOGGLE_TODO:
-			return state.todos.map((todo) => (
+			return state.map((todo) => (
 				todo.text === action.text
 				? {text: todo.text, completed: !todo.completed}
 				: todo
 			))
 		case REMOVE_TODO:
-			return state.todos.filter((todo) => todo.text !== action.text)
+			return state.filter((todo) => todo.text !== action.text)
 		default:
 			return state
 	}
