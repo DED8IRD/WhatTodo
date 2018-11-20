@@ -1,50 +1,22 @@
-# Styling React Elements
+# Redux
 
-Because **Babel** transpiles JSX elements into plain HTML elements, you can style them using CSS as-per-usual.
+Redux is a state management framework. So far we have implemented component state through this format:
+1. State is 'lifted up' to the closest shared ancestor: `App.js` - our WhatTodo app component
+2. We pass state modifiers down to child components as `props`
 
-## Adding CSS classes and ids to JSX elements
-### class
-Because `class` is a keyword in JavaScript, React uses the prop `className` to add CSS classes to a JSX element. Simply pass a string as the `className` prop.
+For larger and more complex application structures this can easily get messy. What if we need to update state across many components that aren't related? What if only a child far down in the hierarchy needs a state modifier? This would entail us passing state down via props through many components that don't modify the state at all and generating more complex hierarchies where there need not be.
 
-### id 
-`id` is not a reserved keyword, so add them to JSX elements normally.
+## Solution: Use a state management framework like Redux or Flux
+With Redux, we will maintain a single application state called a `store`. All components can access the application-wide state by sending an **action** to the `store`, which computes a **new state**.
 
-```jsx 
-render() {
-	return <h1 className="greeting" id="hello-world">Hello World!</h1>
-}
-``` 
+## Tutorial
+Refer to the tutorial [here](https://github.com/DED8IRD/NodeReactFullStack/blob/master/2%20React/docs/Redux.md#usage). 
 
-Babel transpiles the code above into the following HTML:
-```html 
-<h1 class="greeting" id="hello-world">Hello World!</h1>
-``` 
-
-## Style with CSS
-Style with CSS as usual (reference classes with `.` and ids with `#`.
-
-## Inline Styling
-The `style` attribute accepts a JavaScript object with *camelCased* properties rather than *kebab-cased* CSS strings.
-
-```jsx 
-const greetStyle = {
-	color: 'green',
-	fontSize: '72',
-	backgroundImg: `url(${imgUrl})`
-}
-
-const GreetComponent = (props) => {
-	return <div style={greetStyle}>Hello World!</div>
-}
-
+Make sure to install Redux:
 ```
-
-As of React 16, any standard or custom DOM attributes are fully supported. You may also use custom attributes as long as they’re fully lowercase.
-
+> yarn add redux react-redux 
+// OR 
+> npm install redux react-redux
+```
 ___
-Note: Many examples use `style` for convenience, but using the `style` attribute as the primary means of styling elements is **generally not recommended**. 
-
-In most cases, `className` should be used to reference classes defined in an external CSS stylesheet. `style` is most often used in React applications to add dynamically-computed styles at render time. 
-
-___
-In this section, style WhatTodo App.
+In this section, we will implement Redux with WhatTodo app.

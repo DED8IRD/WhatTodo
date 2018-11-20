@@ -15,6 +15,7 @@ const Todos = (props) => {
           props.todos.map(todo => (
             <Todo 
               todo={todo} 
+              toggleTodo={props.toggleTodo}
               removeTodo={props.removeTodo}
               key={todo} 
             />

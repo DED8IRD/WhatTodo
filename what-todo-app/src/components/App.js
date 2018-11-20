@@ -54,13 +54,23 @@ export default class App extends React.Component {
       return "Error: Duplicate todo."
     }
     this.setState((prevState) => ({
-      todos: prevState.todos.concat([todo])
+      todos: prevState.todos.concat([{text: todo, completed: false}])
+    }))
+  }
+
+  toggleTodo(todo) {
+    this.setState((prevState) => ({
+      todos: prevState.map((todo) => (
+        todo.text === todo 
+        ? {text: todo, completed: !todo.completed} 
+        : todo
+      ))
     }))
   }
 
   removeTodo(todo) {
     this.setState((prevState) => ({
-      todos: prevState.todos.filter(item => item !== todo)
+      todos: prevState.todos.filter(item => item.text !== todo)
     }))    
   }
 
@@ -87,6 +97,7 @@ export default class App extends React.Component {
         />
         <Todos 
           todos={this.state.todos}
+          toggleTodo={this.toggleTodo}
           removeTodo={this.removeTodo}
           removeAll={this.removeAll}
         />

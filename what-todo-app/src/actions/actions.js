@@ -2,6 +2,7 @@
 
 // action types
 export const ADD_TODO = 'ADD_TODO'
+export const TOGGLE_TODO = 'TOGGLE_TODO'
 export const REMOVE_TODO = 'REMOVE_TODO'
 export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER'
 
@@ -18,9 +19,14 @@ export const addTodo = (text) => ({
 	text
 }) 
 
-export const removeTodo = (idx) => ({
+export const toggleTodo = (text) => ({
+	type: TOGGLE_TODO,
+	text
+})
+
+export const removeTodo = (text) => ({
 	type: REMOVE_TODO,
-	idx
+	text
 })
 
 export const setVisibilityFilter = (filter) => ({

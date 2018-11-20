@@ -6,13 +6,15 @@ import todos from './todoReducer'
 import visibilityFilter from './visibilityFilterReducer'
 import {combineReducers} from 'redux'
 
-export default const todoApp = combineReducers({
-	todos,
-	visibilityFilter
-})
+export default function todoApp() {
+	return combineReducers({
+		todos,
+		visibilityFilter
+	})
+}
 
 // // The following lines do the same as the above
-// export default const todoApp = (state={}, action) => {
+// export default todoApp(state={}, action) {
 // 	return {
 // 		todos: todos(state.todos, action),
 // 		visibilityFilter: visibilityFilter(state.visibilityFilter, action)
