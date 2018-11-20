@@ -20,3 +20,7 @@ Make sure to install Redux:
 ```
 ___
 In this section, we will implement Redux with WhatTodo app.
+Follow the tutorial above.
+Make the following changes to WhatTodo app:
+1. Define a new method `toggleTodo` that toggles to completion of a todo. Update `state.todos` accordingly.
+2. Pass `toggleTodo()` as a prop to relevant components.
