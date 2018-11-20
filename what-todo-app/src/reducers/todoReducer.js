@@ -13,9 +13,9 @@ export default const todos = (state=[], action) => {
 		case TOGGLE_TODO:
 			return state.todos.map((todo, idx) => (
 				idx === action.idx 
-				?	{text: todo.text, completed: !todo.completed}) 
+				?	{text: todo.text, completed: !todo.completed}
 				: todo
-			)
+			))
 		default:
 			return state
 	}
