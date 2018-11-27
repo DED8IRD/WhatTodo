@@ -23,8 +23,13 @@ export default class AddTodo extends React.Component {
 	render() {
 		return (
       <form onSubmit={this.onFormSubmit}>
-        <input type='text' name='todo'/>
-        <button>+</button>
+        <input 
+          className='main-input'
+          type='text' 
+          name='todo'
+          placeholder='Enter a task...'
+        />
+        <button className='hidden'>+</button>
         {this.state.error && <p style={{color: 'darkred'}}>{this.state.error}</p>}        
       </form> 				
 		);

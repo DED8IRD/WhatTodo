@@ -5,6 +5,7 @@ const Todos = (props) => {
   return (
     <div>
       <button 
+        className='span-btn'
         onClick={props.removeAll}
         disabled={props.todos.length === 0}
       >
@@ -19,7 +20,7 @@ const Todos = (props) => {
               key={todo} 
             />
           )) 
-          : "Nothing to do."
+          : <li>Nothing to do.</li>
         )}
       </ul>
     </div>    

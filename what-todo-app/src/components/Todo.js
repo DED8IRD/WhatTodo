@@ -3,7 +3,10 @@ import React from 'react';
 const Todo = (props) => {
 	return (
 		<li>
-			<button onClick={() => props.removeTodo(props.todo)}>×</button>
+			<i 
+				className='fa fa-times'
+				onClick={() => props.removeTodo(props.todo)}
+			></i>
 			<p>{props.todo}</p>
 		</li>
 	)	
