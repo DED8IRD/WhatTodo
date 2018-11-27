@@ -13,11 +13,8 @@ export default class AddTodo extends React.Component {
   onFormSubmit(evt) {
     evt.preventDefault(); 
     const todo = evt.target.elements.todo.value
-    const error = this.props.addTodo(todo) 
+    this.props.addTodo(todo) 
     evt.target.elements.todo.value = ''
-    this.setState(() => ({
-      error: error
-    }))
   }
 
 	render() {

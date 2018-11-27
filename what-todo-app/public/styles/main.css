@@ -23,4 +23,10 @@ input {
 
 li button {
 	float: right;
+	width: 30px;
+	height: 30px;
+}
+
+span button {
+	width: 90px
 }

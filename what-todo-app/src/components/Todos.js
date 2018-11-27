@@ -17,7 +17,7 @@ const Todos = (props) => {
               todo={todo} 
               toggleTodo={props.toggleTodo}
               removeTodo={props.removeTodo}
-              key={todo} 
+              key={todo.text} 
             />
           )) 
           : "Nothing to do."
