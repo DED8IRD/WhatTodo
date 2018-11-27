@@ -5,6 +5,7 @@ const Todos = (props) => {
   return (
     <div>
       <button 
+        className='block-btn'
         onClick={props.removeAll}
         disabled={props.todos.length === 0}
       >
@@ -20,7 +21,7 @@ const Todos = (props) => {
               key={todo.text} 
             />
           )) 
-          : "Nothing to do."
+          : <li>Nothing to do.</li>
         )}
       </ul>
     </div>    

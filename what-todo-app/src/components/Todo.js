@@ -2,16 +2,19 @@ import React from 'react';
 
 const Todo = (props) => {
 	return (
-		<li>
-			<button onClick={() => props.toggleTodo(props.todo.text)}>✓</button>
-			<button onClick={() => props.removeTodo(props.todo.text)}>×</button>
-			<p 
-				style={{
-					textDecoration: (props.todo.completed ? 'line-through' : 'none')
-				}}
-			>
-				{props.todo.text}
-			</p>
+		<li
+			className={(props.todo.completed ? 'completed' : '')}
+		>
+			<i 
+				className='fa fa-times'
+				onClick={() => props.removeTodo(props.todo.text)}
+			></i>
+			<i 
+				className='fa fa-check'
+				onClick={() => props.toggleTodo(props.todo.text)}
+			></i>			
+
+			<p>{props.todo.text}</p>
 		</li>
 	)	
 }

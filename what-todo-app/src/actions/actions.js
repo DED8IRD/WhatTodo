@@ -4,6 +4,7 @@
 export const ADD_TODO = 'ADD_TODO'
 export const TOGGLE_TODO = 'TOGGLE_TODO'
 export const REMOVE_TODO = 'REMOVE_TODO'
+export const REMOVE_ALL = 'REMOVE_ALL'
 export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER'
 
 // other constants
@@ -27,6 +28,10 @@ export const toggleTodo = (text) => ({
 export const removeTodo = (text) => ({
 	type: REMOVE_TODO,
 	text
+})
+
+export const removeAll = () => ({
+	type: REMOVE_ALL
 })
 
 export const setVisibilityFilter = (filter) => ({

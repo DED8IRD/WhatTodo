@@ -3,13 +3,6 @@ import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 import {createStore} from 'redux'
 import {Provider} from 'react-redux'
-import {
-  addTodo,
-  toggleTodo,
-  removeTodo,
-  setVisibilityFilter,
-  VisibilityFilters
-} from './actions/actions'
 import todoApp from './reducers/rootReducer'
 import App from './components/App';
 

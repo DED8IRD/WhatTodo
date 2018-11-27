@@ -9,7 +9,6 @@ const Footer = (props) => {
   return (
   	<div>
 	    <span>
-	    	Show:
 	    	<Filter filter={SHOW_ALL}>All</Filter>
 	    	<Filter filter={SHOW_ACTIVE}>Active</Filter>
 	    	<Filter filter={SHOW_COMPLETED}>Completed</Filter>

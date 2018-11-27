@@ -9,7 +9,6 @@ export default class App extends React.Component {
   // define constructor to initialize default state object
   constructor(props) {
     super(props)
-    // #1 set up default state object
     this.state = {
       title: props.title,
       subtitle: props.subtitle,
@@ -24,8 +23,8 @@ export default class App extends React.Component {
           subtitle={this.state.subtitle}
         />
         <AddTodoContainer />
-        <Decision />  
         <VisibleTodos />
+        <Decision />  
         <Footer />
       </div>
     )

@@ -3,8 +3,8 @@ import React from 'react'
 
 const FilterButton = (props) => {
   return (
-    <button
-    	onClick={props.setVisibilityFilter(props.filter)}
+    <button className='span-btn'
+    	onClick={() => props.setVisibilityFilter(props.filter)}
     	disabled={props.active}
     >
     	{props.children}

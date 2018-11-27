@@ -5,6 +5,7 @@ import {
   ADD_TODO,
   TOGGLE_TODO,
   REMOVE_TODO,
+  REMOVE_ALL
 } from '../actions/actions'
 
 export default function todos(state=[], action) {
@@ -19,6 +20,8 @@ export default function todos(state=[], action) {
 			))
 		case REMOVE_TODO:
 			return state.filter((todo) => todo.text !== action.text)
+		case REMOVE_ALL:
+			return []
 		default:
 			return state
 	}

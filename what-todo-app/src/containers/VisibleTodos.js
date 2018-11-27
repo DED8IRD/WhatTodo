@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {
 	toggleTodo, 
 	removeTodo,
+	removeAll,
 	VisibilityFilters
 } from '../actions/actions'
 import Todos from '../components/Todos'
@@ -26,7 +27,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
 	toggleTodo,
-	removeTodo
+	removeTodo,
+	removeAll
 }
 
 const VisibleTodos = connect(
