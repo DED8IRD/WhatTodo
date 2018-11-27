@@ -1,4 +1,4 @@
-// mainReducer.js
+// rootReducer.js
 // Combines smaller reducers into single object. 
 // We no longer need to know a complete initial state.
 
