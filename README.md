@@ -1,23 +1,9 @@
-# Redux
+# What Todo App
 
-Redux is a state management framework. So far we have implemented component state through this format:
-1. State is 'lifted up' to the closest shared ancestor: `App.js` - our WhatTodo app component
-2. We pass state modifiers down to child components as `props`
+This is the project repo for **What Todo** - a guide for the React portion of PDX Code Guild's [Node & React Full Stack Bootcamp](https://github.com/DED8IRD/NodeReactFullStack).
 
-For larger and more complex application structures, this can easily get messy. What if we need to update state across many components that aren't related? What if only a child far down in the hierarchy needs a state modifier? This would entail us passing state down via props through many components that don't modify the state at all and generating more complex hierarchies where there need not be.
+Each branch contains a portion of the project, which is typically divided by conceptual segments. Within each, we begin from the basics of React and JSX and work our way up to the final realized What Todo application. 
 
-## Solution: Use a state management framework like Redux or Flux
-With Redux, we will maintain a single application state called a `store`. All components can access the application-wide state by sending an **action** to the `store`, which computes a **new state**.
+There is a detailed README describing the tasks and goals of each branch. There are usually code stubs or a simplified example located in [`./what-todo-app/src/playground/`](./what-todo-app/src/playground/) that is intended to guide you to the solution. 
 
-## Tutorial
-Refer to the tutorial [here](https://github.com/DED8IRD/NodeReactFullStack/blob/master/2%20React/docs/Redux.md#usage). 
-
-Make sure to install Redux:
-```
-> yarn add redux react-redux 
-// OR 
-> npm install redux react-redux
-```
-___
-In this section, we will implement Redux with WhatTodo app.
-Follow the tutorial above.
+The solutions for each section are located within the branch (typically in [`./what-todo-app/src/App.js`](./what-todo-app/src/App.js) unless otherwise noted). I highly recommend attempting the section tasks yourself before going over the solution.
