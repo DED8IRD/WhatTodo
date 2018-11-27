@@ -22,7 +22,7 @@ const filterTodos = (todos, filter) => {
 }
 
 const mapStateToProps = (state) => ({
-	todos: filterTodos(state.todos, state.filter)
+	todos: filterTodos(state.todos, state.visibilityFilter)
 })
 
 const mapDispatchToProps = {
